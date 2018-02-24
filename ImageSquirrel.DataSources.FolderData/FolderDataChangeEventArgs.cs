@@ -6,10 +6,21 @@ using ImageSquirrel.Formats.External;
 
 namespace ImageSquirrel.DataSources.FolderData
 {
+    /// <summary>
+    /// Represents an <see cref="IFolderDataChangeEventArgs"/> implementation which wraps
+    /// <see cref="FileSystemEventArgs"/>.
+    /// </summary>
     public class FolderDataChangeEventArgs : IFolderDataChangeEventArgs
     {
         private string name;
 
+        /// <summary>
+        /// Instantiates a new <see cref="FolderDataChangeEventArgs"/> wrapping the supplied
+        /// <see cref="FileSystemEventArgs"/> <paramref name="e"/>.
+        /// </summary>
+        /// <param name="e">
+        /// The <see cref="FileSystemEventArgs"/> to wrap.
+        /// </param>
         public FolderDataChangeEventArgs(FileSystemEventArgs e)
         {
             switch (e.ChangeType)
@@ -32,10 +43,13 @@ namespace ImageSquirrel.DataSources.FolderData
             this.Path = new FilePath(e.FullPath);
         }
 
+        /// <inheritdoc />
         public DataSourceChangeEventType EventType { get; private set; }
 
+        /// <inheritdoc />
         public FilePath Path { get; private set; }
 
+        /// <inheritdoc />
         public IDataInformation GetImageInformation()
         {
             FileInfo info = new FileInfo(this.Path.Path);

@@ -6,8 +6,12 @@ using ImageSquirrel.DataSources.External;
 
 namespace ImageSquirrel.DataSources.FolderData
 {
+    /// <summary>
+    /// Represents an <see cref="IDirectoryInteractor"/> implementation which operates on local file paths.
+    /// </summary>
     public class DirectoryInteractor : IDirectoryInteractor
     {
+        /// <inheritdoc />
         public IEnumerable<FilePath> EnumerateFiles(FilePath path, SearchPattern pattern = null)
         {
             if (path == null)
@@ -35,6 +39,7 @@ namespace ImageSquirrel.DataSources.FolderData
             return enumerationResult.Select(x => new FilePath(x));
         }
 
+        /// <inheritdoc />
         public IEnumerable<FilePath> EnumerateDirectories(FilePath path, SearchPattern pattern = null)
         {
             if (path == null)

@@ -8,6 +8,9 @@ using ImageSquirrel.DataSources.FolderData.Internationalization;
 
 namespace ImageSquirrel.DataSources.FolderData
 {
+    /// <summary>
+    /// Represents an <see cref="IDataSourceFactory"/> implementation which produces <see cref="FolderDataSource"/>s.
+    /// </summary>
     [Export(typeof(IDataSourceFactory))]
     public class FolderDataSourceFactory : IDataSourceFactory
     {
@@ -49,8 +52,10 @@ namespace ImageSquirrel.DataSources.FolderData
                 FolderDataSourceFactory.interactorFactory
             };
 
+        /// <inheritdoc />
         public IReadOnlyList<IConfigurationRequirement> Requirements => FolderDataSourceFactory.requirements;
 
+        /// <inheritdoc />
         public IDataSource MakeDataSource(IReadOnlyDictionary<IConfigurationRequirement, object> bindings)
         {
             if (bindings == null)

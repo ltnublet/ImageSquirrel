@@ -25,3 +25,15 @@ using Visual Studio Community 2017.
 ## Plugin Development
 There is currently no well-defined ABI. It is recommended against writing a
 plugin at this time.
+
+# TODO
+  * FolderDataSource doesn't expose SearchPattern; fix this.
+  * FolderDataSource uses a placeholder IImageInformation implementation;
+    replace this with a real implementation.
+  * Review CLS compliancy (assemblies are marked as non-CLS-compliant, but it
+    is recommended to mark the assembly as compliant and then selectively mark
+    contained classes as non-compliant.)
+  * Review DirectoryInteractor changeFilterTicks; should probably redesign to
+    use some sort of cache with the path as the key, and with eviction occuring
+    after the specified interval. Then, on each change event, check if the path
+    is in the cache, and only raise the externally visible event if not so.

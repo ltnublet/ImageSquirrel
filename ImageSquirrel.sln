@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSquirrel.DataSources.External", "ImageSquirrel.DataSources.External\ImageSquirrel.DataSources.External.csproj", "{D411F355-052B-4603-8204-C7E5BA0FB741}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F139E0C4-F5FB-479D-AF95-8ACFFC073F6D}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".StyleCop", ".StyleCop", "{532206E0-2B96-469C-AA76-56D7787A9006}"
 	ProjectSection(SolutionItems) = preProject

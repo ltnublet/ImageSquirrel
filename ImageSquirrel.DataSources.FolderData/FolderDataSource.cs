@@ -8,6 +8,9 @@ using ImageSquirrel.Formats.External;
 
 namespace ImageSquirrel.DataSources.FolderData
 {
+    /// <summary>
+    /// Represents an <see cref="IDataSource"/> implementation which uses a local directory as the backing data store.
+    /// </summary>
     public class FolderDataSource : IDataSource
     {
         private readonly IDirectoryInteractorFactory interactorFactory;
@@ -63,12 +66,18 @@ namespace ImageSquirrel.DataSources.FolderData
             }
         }
 
+        /// <summary>
+        /// Raised when a change occurs within the underlying directory.
+        /// </summary>
         public event EventHandler<IDataSourceChangeEventArgs> OnChange;
 
+        /// <inheritdoc />
         public int Count => this.files.Count;
 
+        /// <inheritdoc />
         public string Name => this.root.Path;
 
+        /// <inheritdoc />
         public void Dispose()
         {
             lock (this.disposalLock)
@@ -83,11 +92,13 @@ namespace ImageSquirrel.DataSources.FolderData
             }
         }
 
+        /// <inheritdoc />
         public IEnumerator<IDataInformation> GetEnumerator()
         {
             return this.files.Select(x => x.Value).GetEnumerator();
         }
 
+        /// <inheritdoc />
         public IReadOnlyList<IDataSource> GetSubDataSources()
         {
             return this

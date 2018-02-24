@@ -1,14 +1,15 @@
 ﻿using ImageSquirrel.DataSources.External;
-using ImageSquirrel.Formats.External;
 
 namespace ImageSquirrel.DataSources.FolderData
 {
+    /// <summary>
+    /// Represents a change in an <see cref="FolderDataSource"/>.
+    /// </summary>
     public interface IFolderDataChangeEventArgs : IDataSourceChangeEventArgs
     {
-        DataSourceChangeEventType EventType { get; }
-
+        /// <summary>
+        /// The local file path associated with this change.
+        /// </summary>
         FilePath Path { get; }
-
-        IDataInformation GetImageInformation();
     }
 }
