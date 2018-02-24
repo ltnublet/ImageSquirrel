@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="ConfigurationRequirementType.cs" />
     <Compile Include="DataSourceChangeEventType.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IDataSourceChangeEventArgs.cs" />
     <Compile Include="IConfigurationRequirement.cs" />
     <Compile Include="IDataSource.cs" />
