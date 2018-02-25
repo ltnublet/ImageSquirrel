@@ -39,12 +39,16 @@ namespace ImageSquirrel.DataSources.ReferenceImplementation
             this.streamCreator = streamCreator ?? throw new ArgumentNullException(nameof(streamCreator));
         }
 
+        /// <inheritdoc />
         public DateTime Created { get; private set; }
 
+        /// <inheritdoc />
         public DateTime LastModified => this.lastModified.Invoke();
 
+        /// <inheritdoc />
         public string Name { get; private set; }
 
+        /// <inheritdoc />
         public bool TryOpen(out Stream stream, out Exception failureReason)
         {
             try

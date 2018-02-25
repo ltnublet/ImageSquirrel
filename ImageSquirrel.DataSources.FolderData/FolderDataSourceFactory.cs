@@ -17,7 +17,7 @@ namespace ImageSquirrel.DataSources.FolderData
         private static IConfigurationRequirement path =
             ConfigurationRequirement.Path(en_us.RootPathName, en_us.RootPathDescription, false);
         private static IConfigurationRequirement factoryChangeFilterTicks =
-            ConfigurationRequirement.Long(en_us.ChangeFilterTicksName, en_us.ChangeFilterTicksDescription, true);
+            ConfigurationRequirement.Int64(en_us.ChangeFilterTicksName, en_us.ChangeFilterTicksDescription, true);
         private static IConfigurationRequirement factoryFilter =
             ConfigurationRequirement.String(en_us.FilterName, en_us.FilterDescription, true);
         private static IConfigurationRequirement watcherFactory =

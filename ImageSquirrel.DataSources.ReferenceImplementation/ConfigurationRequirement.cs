@@ -7,10 +7,43 @@ using ImageSquirrel.DataSources.ReferenceImplementation.Internationalization;
 
 namespace ImageSquirrel.DataSources.ReferenceImplementation
 {
+    /// <summary>
+    /// Represents an <see cref="IConfigurationRequirement"/> implementation.
+    /// </summary>
     public class ConfigurationRequirement : IConfigurationRequirement
     {
         private Func<object, Exception> validator;
 
+        /// <summary>
+        /// Instantiates a new <see cref="ConfigurationRequirement"/> instance using the supplied parameters.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the <see cref="ConfigurationRequirement"/>.
+        /// </param>
+        /// <param name="description">
+        /// The description of the <see cref="ConfigurationRequirement"/>.
+        /// </param>
+        /// <param name="ofType">
+        /// The <see cref="ConfigurationRequirementType"/> of the <see cref="ConfigurationRequirement"/>.
+        /// </param>
+        /// <param name="isCollection">
+        /// Indicates whether this <see cref="ConfigurationRequirement"/> is for a single instance of the type
+        /// indicated by <paramref name="ofType"/>, or a collection.
+        /// </param>
+        /// <param name="isOptional">
+        /// Indicates whether this <see cref="ConfigurationRequirement"/> is optional.
+        /// </param>
+        /// <param name="validator">
+        /// Validates <see cref="object"/>s to determine if they satisfy the <see cref="ConfigurationRequirement"/>.
+        /// </param>
+        /// <param name="dependsOn">
+        /// A collection of <see cref="IConfigurationRequirement"/>s which this <see cref="ConfigurationRequirement"/>
+        /// must be supplied alongside.
+        /// </param>
+        /// <param name="exclusiveWith">
+        /// A collection of <see cref="IConfigurationRequirement"/>s which this <see cref="ConfigurationRequirement"/>
+        /// must not be supplied alongside with.
+        /// </param>
         public ConfigurationRequirement(
             string name,
             string description,
@@ -33,20 +66,52 @@ namespace ImageSquirrel.DataSources.ReferenceImplementation
             this.validator = validator ?? throw new ArgumentNullException(nameof(validator));
         }
 
+        /// <inheritdoc />
         public IEnumerable<IConfigurationRequirement> DependsOn { get; private set; }
 
+        /// <inheritdoc />
         public string Description { get; private set; }
 
+        /// <inheritdoc />
         public IEnumerable<IConfigurationRequirement> ExclusiveWith { get; private set; }
 
+        /// <inheritdoc />
         public bool IsCollection { get; private set; }
 
+        /// <inheritdoc />
         public bool IsOptional { get; private set; }
 
+        /// <inheritdoc />
         public string Name { get; private set; }
 
+        /// <inheritdoc />
         public ConfigurationRequirementType OfType { get; private set; }
 
+        /// <summary>
+        /// Creates a new <see cref="ConfigurationRequirement"/> of type
+        /// <see cref="ConfigurationRequirementType.String"/>.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the <see cref="ConfigurationRequirement"/>.
+        /// </param>
+        /// <param name="description">
+        /// The description of the <see cref="ConfigurationRequirement"/>.
+        /// </param>
+        /// <param name="isOptional">
+        /// Indicates whether the <see cref="ConfigurationRequirement"/> is optional.
+        /// </param>
+        /// <param name="dependsOn">
+        /// A collection of <see cref="IConfigurationRequirement"/>s which this <see cref="ConfigurationRequirement"/>
+        /// must be supplied alongside.
+        /// </param>
+        /// <param name="exclusiveWith">
+        /// A collection of <see cref="IConfigurationRequirement"/>s which this <see cref="ConfigurationRequirement"/>
+        /// must not be supplied alongside with.
+        /// </param>
+        /// <returns>
+        /// A <see cref="ConfigurationRequirement"/> of type <see cref="ConfigurationRequirementType.String"/> with the
+        /// supplied properties.
+        /// </returns>
         public static IConfigurationRequirement String(
             string name,
             string description,
@@ -81,6 +146,31 @@ namespace ImageSquirrel.DataSources.ReferenceImplementation
                 exclusiveWith);
         }
 
+        /// <summary>
+        /// Creates a new <see cref="ConfigurationRequirement"/> of type
+        /// <see cref="ConfigurationRequirementType.Path"/>.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the <see cref="ConfigurationRequirement"/>.
+        /// </param>
+        /// <param name="description">
+        /// The description of the <see cref="ConfigurationRequirement"/>.
+        /// </param>
+        /// <param name="isOptional">
+        /// Indicates whether the <see cref="ConfigurationRequirement"/> is optional.
+        /// </param>
+        /// <param name="dependsOn">
+        /// A collection of <see cref="IConfigurationRequirement"/>s which this <see cref="ConfigurationRequirement"/>
+        /// must be supplied alongside.
+        /// </param>
+        /// <param name="exclusiveWith">
+        /// A collection of <see cref="IConfigurationRequirement"/>s which this <see cref="ConfigurationRequirement"/>
+        /// must not be supplied alongside with.
+        /// </param>
+        /// <returns>
+        /// A <see cref="ConfigurationRequirement"/> of type <see cref="ConfigurationRequirementType.Path"/> with the
+        /// supplied properties.
+        /// </returns>
         public static IConfigurationRequirement Path(
             string name,
             string description,
@@ -115,7 +205,32 @@ namespace ImageSquirrel.DataSources.ReferenceImplementation
                 exclusiveWith);
         }
 
-        public static IConfigurationRequirement Long(
+        /// <summary>
+        /// Creates a new <see cref="ConfigurationRequirement"/> of type
+        /// <see cref="ConfigurationRequirementType.Int64"/>.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the <see cref="ConfigurationRequirement"/>.
+        /// </param>
+        /// <param name="description">
+        /// The description of the <see cref="ConfigurationRequirement"/>.
+        /// </param>
+        /// <param name="isOptional">
+        /// Indicates whether the <see cref="ConfigurationRequirement"/> is optional.
+        /// </param>
+        /// <param name="dependsOn">
+        /// A collection of <see cref="IConfigurationRequirement"/>s which this <see cref="ConfigurationRequirement"/>
+        /// must be supplied alongside.
+        /// </param>
+        /// <param name="exclusiveWith">
+        /// A collection of <see cref="IConfigurationRequirement"/>s which this <see cref="ConfigurationRequirement"/>
+        /// must not be supplied alongside with.
+        /// </param>
+        /// <returns>
+        /// A <see cref="ConfigurationRequirement"/> of type <see cref="ConfigurationRequirementType.Int64"/> with the
+        /// supplied properties.
+        /// </returns>
+        public static IConfigurationRequirement Int64(
             string name,
             string description,
             bool isOptional,
@@ -149,6 +264,7 @@ namespace ImageSquirrel.DataSources.ReferenceImplementation
                 exclusiveWith);
         }
 
+        /// <inheritdoc />
         public Exception Validate(object instance)
         {
             try
@@ -161,6 +277,7 @@ namespace ImageSquirrel.DataSources.ReferenceImplementation
             }
         }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             const string @null = "<null>";
