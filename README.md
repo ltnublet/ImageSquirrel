@@ -30,6 +30,8 @@ plugin at this time.
   * FolderDataSource doesn't expose SearchPattern; fix this.
   * FolderDataSource uses a placeholder IImageInformation implementation;
     replace this with a real implementation.
+  * The Formats.External namespace consists almost entirely of stubs; replace
+    with real implementations.
   * Review CLS compliancy (assemblies are marked as non-CLS-compliant, but it
     is recommended to mark the assembly as compliant and then selectively mark
     contained classes as non-compliant.)
